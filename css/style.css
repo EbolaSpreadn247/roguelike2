@@ -1,22 +1,9 @@
-canvas{
-    outline: 1px dotted rgb(223, 49, 18);
-    background-color: rgb(56, 9, 9)
-}
+    canvas{
+        outline: 1px dotted #12DF44;
+    }
 
-body{
-    background-color: indigo;
-    text-align: center;
-    margin-top: 50px;
-}
-
-p{
-  text-align:left;
-  position: relative;
-  /*right: 33%;*/
-  top: auto;
-  /*background-clip: border-box;
-  background-image: linear-gradient(to right, red , red, red , red, red , red, red , red, red , red, red , red, red , red, red , red, red , red, red , red, red , rgb(31, 29, 29), rgb(31, 29, 29) , rgb(31, 29, 29));
-  border: solid;
-  border-width: 3px;
-  border-color: rgb(31, 29, 29);*/
-}
+    body{
+        background-color: indigo;
+        text-align: center;
+        margin-top: 50px;
+    }
