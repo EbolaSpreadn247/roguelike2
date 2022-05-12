@@ -22,6 +22,7 @@
     <canvas id="canvas">
       
     </canvas>
+
     
 
     <script>
@@ -31,16 +32,13 @@
       uiHeight = 1;
       floorLevel = 1; //floors.
       //ctx.fillRect(0,0,20,20,20);   
-      userInput = [false,0];
-      //spriteState = 0;
-      spritesheet0 = new Image();
-      spritesheet0.src = 'images/spritesheet0.png';
-      spritesheet0.onload = showTitle;
-      //spritesheet = new Image();
-      //spritesheet.src = 'images/spritesheet1.png';
       
-      //spritesheetDark = new Image();
-      //spritesheetDark.src = 'images/spritesheet1Dark.png';
+      //spriteState = 0;
+      spritesheet = new Image();
+      spritesheet.src = 'images/spritesheet1.png';
+      spritesheet.onload = showTitle;
+      spritesheetDark = new Image();
+      spritesheetDark.src = 'images/spritesheet1Dark.png';
       //spritesheetDark.onload = showTitle;
       
       viewImageList = ["default.png","mimic.png","slime.png"];
@@ -73,45 +71,44 @@
         //prevX = x;
         //prevY = y;
         
-        if(e.key=="7") { userInput =[true,7];}
-        if(e.key=="8") { userInput =[true,8];}
-        if(e.key=="9") { userInput =[true,9];}
+        if(e.key=="7") { player.tryMove(-1,-1);}
+        if(e.key=="8") { player.tryMove(0,-1);}
+        if(e.key=="9") { player.tryMove(1,-1);}
 
-        if(e.key=="1") { userInput =[true,1];}
-        if(e.key=="2") { userInput =[true,2];}
-        if(e.key=="3") { userInput =[true,3];}
+        if(e.key=="1") { player.tryMove(-1,1);}
+        if(e.key=="2") { player.tryMove(0,1);}
+        if(e.key=="3") { player.tryMove(1,1);}
 
-        if(e.key=="4") { userInput =[true,4];}
-        if(e.key=="6") { userInput =[true,6];}
+        if(e.key=="4") { player.tryMove(-1,0);}
+        if(e.key=="6") { player.tryMove(1,0);}
 
-        if(e.key=="5"){ userInput =[true,5];
-        //  tile = player.tile;
-        //  tile.interact(player);
+        if(e.key=="5"){ 
+          tile = player.tile;
+          tile.interact(player);
         }
 
-        if(e.key=="q") { userInput =[true,"q"];}
-        if(e.key=="w") { userInput =[true,"w"];}
-        if(e.key=="e") { userInput =[true,"e"];}
+        if(e.key=="q") { player.tryMove(-1,-1);}
+        if(e.key=="w") { player.tryMove(0,-1);}
+        if(e.key=="e") { player.tryMove(1,-1);}
 
-        if(e.key=="z") { userInput =[true,"z"];}
-        if(e.key=="x") { userInput =[true,"x"];}
-        if(e.key=="c") { userInput =[true,"c"];}
+        if(e.key=="z") { player.tryMove(-1,1);}
+        if(e.key=="x") { player.tryMove(0,1);}
+        if(e.key=="c") { player.tryMove(1,1);}
 
-        if(e.key=="a") { userInput =[true,"a"];}
-        if(e.key=="d") { userInput =[true,"d"];}
+        if(e.key=="a") { player.tryMove(-1,0);}
+        if(e.key=="d") { player.tryMove(1,0);}
 
         if(e.key=="s"){ 
-          userInput = [true,"s"];
-        //  tile = player.tile;
-        //  tile.interact(player);
+          tile = player.tile;
+          tile.interact(player);
         }
 
-        //if(e.key=="e"){ //takeDamage(1);
+        if(e.key=="e"){ //takeDamage(1);
         //spriteState = 1;
-       // player.sprite = 1;}
-        //if(e.key=="r"){
+        player.sprite = 1;}
+        if(e.key=="r"){
         //spriteState = 0;
-        //player.sprite = 0;}
+        player.sprite = 0;}
         
         //if( getTile(x, y).passable == false){
         //  x = prevX;
@@ -121,7 +118,7 @@
       }
       //console.log("V");
       setupCanvas();
-      setInterval(runGame, 10);
+      setInterval(draw, 5);
       
       //generateLevel();
       
