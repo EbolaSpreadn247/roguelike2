@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>ROW, ROW, ROWG ALIKE</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <!--<script src="js/script.js"></script>-->
+    <script src="js/game.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/monster.js"></script>
+    <script src="js/spell.js"></script>
+    <script src="js/tile.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/pathFinder.js"></script>
+    <script src="js/binomial.js"></script>
+    <!--<p id="blood" style="background-image: linear-gradient(to right, red, red, red, red, red, red, red, red, red, red, red, red, red, red, red, red, red, red, red, red, red, red, red, red, blue)">Bloood: |||||||||||||||||||| <br>-->
+    <!--<button>-->
+      <!--Money: ||||||||||||||||||||--></p>
+    <canvas id="canvas">
+      
+    </canvas>
+    
+
+    <script>
+      tileSize = 32;
+      numTiles = 20;
+      uiWidth = 20;
+      uiHeight = 1;
+      floorLevel = 1; //floors.
+      //ctx.fillRect(0,0,20,20,20);   
+      userInput = [false,0];
+      //spriteState = 0;
+      spritesheet0 = new Image();
+      spritesheet0.src = 'images/spritesheet0.png';
+      spritesheet0.onload = showTitle;
+      //spritesheet = new Image();
+      //spritesheet.src = 'images/spritesheet1.png';
+      
+      //spritesheetDark = new Image();
+      //spritesheetDark.src = 'images/spritesheet1Dark.png';
+      //spritesheetDark.onload = showTitle;
+      
+      viewImageList = ["default.png","mimic.png","slime.png"];
+      viewImage = viewImageList[0];
+      var viewImageElement = document.createElement("IMG");
+      viewImageElement.setAttribute("src", "images/" + viewImage);
+      viewImageElement.setAttribute("width", "320");
+      viewImageElement.setAttribute("height", "320");
+
+      var textChannels = [];
+      textChannels.push(channel1 = new textChannel("...","red",32*(numTiles+1),260) );
+      textChannels.push(channel2 = new textChannel("...","red",32*(numTiles+1),240) );
+      textChannels.push(channel3 = new textChannel("...","red",32*(numTiles+1),220) );
+      textChannels.push(channel4 = new textChannel("...","red",32*(numTiles+1),200) );
+      textChannels.push(channel5 = new textChannel("...","red",32*(numTiles+1),180) );
+      textChannels.push(channel6 = new textChannel("...","red",32*(numTiles+1),160) );
+      textChannels.push(channel7 = new textChannel("...","red",32*(numTiles+1),140) );
+      textChannels.push(channel8 = new textChannel("...","red",32*(numTiles+1),120) );
+      textChannels.push(channel9 = new textChannel("...","red",32*(numTiles+1),100) );
+
+                             
+      gameState = "loading";  
+
+      document.querySelector("html").onkeypress = function(e){
+        if(gameState == "title"){                              
+          startGame();                
+        } if(gameState == "dead"){                             
+          showTitle();                                        
+        } if(gameState == "running"){ 
+        //prevX = x;
+        //prevY = y;
+        
+        if(e.key=="7") { userInput =[true,7];}
+        if(e.key=="8") { userInput =[true,8];}
+        if(e.key=="9") { userInput =[true,9];}
+
+        if(e.key=="1") { userInput =[true,1];}
+        if(e.key=="2") { userInput =[true,2];}
+        if(e.key=="3") { userInput =[true,3];}
+
+        if(e.key=="4") { userInput =[true,4];}
+        if(e.key=="6") { userInput =[true,6];}
+
+        if(e.key=="5"){ userInput =[true,5];
+        //  tile = player.tile;
+        //  tile.interact(player);
+        }
+
+        if(e.key=="q") { userInput =[true,"q"];}
+        if(e.key=="w") { userInput =[true,"w"];}
+        if(e.key=="e") { userInput =[true,"e"];}
+
+        if(e.key=="z") { userInput =[true,"z"];}
+        if(e.key=="x") { userInput =[true,"x"];}
+        if(e.key=="c") { userInput =[true,"c"];}
+
+        if(e.key=="a") { userInput =[true,"a"];}
+        if(e.key=="d") { userInput =[true,"d"];}
+
+        if(e.key=="s"){ 
+          userInput = [true,"s"];
+        //  tile = player.tile;
+        //  tile.interact(player);
+        }
+
+        //if(e.key=="e"){ //takeDamage(1);
+        //spriteState = 1;
+       // player.sprite = 1;}
+        //if(e.key=="r"){
+        //spriteState = 0;
+        //player.sprite = 0;}
+        
+        //if( getTile(x, y).passable == false){
+        //  x = prevX;
+        //  y = prevY;
+        //}
+      };
+      }
+      //console.log("V");
+      setupCanvas();
+      setInterval(runGame, 10);
+      
+      //generateLevel();
+      
+
+      //player = new Player(randomPassableTile());
+      </script>
+      
+    <p id="3">Time taken</p>
+    <canvas id="canvas2" width="2000" height="400" style="border:1px solid #d3d3d3;">
+  </body>
+</html>
